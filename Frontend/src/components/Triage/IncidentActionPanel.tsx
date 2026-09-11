@@ -47,7 +47,7 @@ COORDINATES: ${lat.toFixed(5)}°N, ${lon.toFixed(5)}°E
 THERMAL POWER: ${p?.frp_max ? p.frp_max.toFixed(0) : "2"} MW (M_i: ${p?.m_score ? p.m_score.toFixed(2) : "4.2"})
 ASSIGNED STATION: ${nearestStation}
 ACTION: ${card?.recommended_action || "Immediate emergency dispatch. Evacuate downwind sector."}
-INCIDENT MAP: https:
+INCIDENT MAP: https://maps.google.com/?q=${lat},${lon}`;
 
   const handleDirectDispatch = async () => {
     setIsSending(true);

@@ -11,22 +11,22 @@ type MapLayerType = 'google-hybrid' | 'google-satellite' | 'google-roadmap' | 'g
 const MAP_TILE_SOURCES: Record<MapLayerType, { name: string; url: string; subtext: string }> = {
   'google-hybrid': {
     name: 'Google Hybrid',
-    url: 'https:
+    url: 'https://mt1.google.com/vt/lyrs=y&x={x}&y={y}&z={z}',
     subtext: 'High-Res Satellite + Street Labels',
   },
   'google-satellite': {
     name: 'Google Satellite',
-    url: 'https:
+    url: 'https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',
     subtext: 'Pure Earth Satellite View',
   },
   'google-roadmap': {
     name: 'Google Roadmap',
-    url: 'https:
+    url: 'https://mt1.google.com/vt/lyrs=m&x={x}&y={y}&z={z}',
     subtext: 'Standard High-Contrast Streets',
   },
   'google-terrain': {
     name: 'Google Terrain',
-    url: 'https:
+    url: 'https://mt1.google.com/vt/lyrs=p&x={x}&y={y}&z={z}',
     subtext: 'Topographical Elevation View',
   },
 };

@@ -30,7 +30,7 @@ export const RiskAssessment: React.FC = () => {
   const [totalAtRisk, setTotalAtRisk] = useState(0);
 
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_BASE_URL ?? 'http:
+    fetch(`${import.meta.env.VITE_API_BASE_URL ?? 'http://127.0.0.1:8000'}/api/predict/21.1523/72.8258`)
       .then(r => r.json())
       .then(d => {
         if (d.status === 'success' && d.escalation_alerts && d.escalation_alerts.length > 0) {

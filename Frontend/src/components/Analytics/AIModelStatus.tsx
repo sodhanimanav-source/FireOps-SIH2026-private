@@ -14,7 +14,7 @@ export const AIModelStatus: React.FC = () => {
   const [status, setStatus] = useState<AIStatus | null>(null);
 
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_BASE_URL ?? 'http:
+    fetch(`${import.meta.env.VITE_API_BASE_URL ?? 'http://127.0.0.1:8000'}/api/ai-status`)
       .then(r => r.json())
       .then(d => { if (d.status === 'success') setStatus(d); })
       .catch(() => {});

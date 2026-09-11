@@ -22,8 +22,8 @@ describe('Data Fetching Layer - apiClient & Normalization Adapter', () => {
     vi.restoreAllMocks();
   });
 
-  it('should have apiClient configured with base URL http:
-    expect(apiClient.defaults.baseURL).toBe(`${import.meta.env.VITE_API_BASE_URL ?? 'http:
+  it('should have apiClient configured with base URL http://127.0.0.1:8000', () => {
+    expect(apiClient.defaults.baseURL).toBe(`${import.meta.env.VITE_API_BASE_URL ?? 'http://127.0.0.1:8000'}`);
   });
 
   it('should normalize backend facility record correctly', () => {

@@ -28,7 +28,7 @@ export const VerificationModal: React.FC<VerificationModalProps> = ({ alert, onC
           'esri-satellite': {
             type: 'raster',
             tiles: [
-              'https:
+              'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}'
             ],
             tileSize: 256,
             attribution: 'Esri, Maxar, Earthstar Geographics'
@@ -58,7 +58,7 @@ export const VerificationModal: React.FC<VerificationModalProps> = ({ alert, onC
           'esri-satellite': {
             type: 'raster',
             tiles: [
-              'https:
+              'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}'
             ],
             tileSize: 256,
           },

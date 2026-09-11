@@ -51,7 +51,7 @@ export function visibleSlice(features: WindowFeature[], idx: number, mode: Scrub
 }
 
 export const useAppStore = create<AppState>((set, get) => ({
-  isAuthenticated: false,
+  isAuthenticated: true,
   login: () => set({ isAuthenticated: true }),
   logout: () => set({ isAuthenticated: false }),
 

@@ -20,7 +20,7 @@ export const PredictiveInsights: React.FC = () => {
   const [totalAtRisk, setTotalAtRisk] = useState(0);
 
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_BASE_URL ?? 'http:
+    fetch(`${import.meta.env.VITE_API_BASE_URL ?? 'http://127.0.0.1:8000'}/api/predict/22.4707/70.0577`)
       .then(r => r.json())
       .then(pred => {
         if (pred.status === 'success' && pred.forecast_7day && pred.forecast_7day.length > 0) {
