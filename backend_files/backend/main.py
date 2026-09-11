@@ -263,14 +263,14 @@ def get_live_hotspots_v1():
                 priority = "MEDIUM"
 
             color_map = {
-                "ROUTINE_FLARING": "
-                "FLARE_SPIKE": "
-                "INDUSTRIAL_ACCIDENT": "
-                "COAL_MINE_FIRE": "
-                "AGRICULTURAL_BURNING": "
-                "WILDFIRE": "
+                "ROUTINE_FLARING": "#FFB300",
+                "FLARE_SPIKE": "#FF8F00",
+                "INDUSTRIAL_ACCIDENT": "#F44336",
+                "COAL_MINE_FIRE": "#D32F2F",
+                "AGRICULTURAL_BURNING": "#FFC107",
+                "WILDFIRE": "#FF5722",
             }
-            node_color = color_map.get(cls, "
+            node_color = color_map.get(cls, "#9E9E9E")
             m_score = hs.get("m_score", 4.7 if priority == "CRITICAL" else (3.9 if priority == "HIGH" else (1.8 if priority == "MEDIUM" else 1.0)))
             is_anomaly = hs.get("is_anomaly", priority in ["HIGH", "CRITICAL"])
 
