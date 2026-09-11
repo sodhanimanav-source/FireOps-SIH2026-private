@@ -1,0 +1,17 @@
+@import "maplibre-gl/dist/maplibre-gl.css";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .glass { @apply bg-slate-900/80 backdrop-blur-md border border-slate-700/60 rounded-lg; }
+  .hud-label { @apply font-mono text-[10px] uppercase tracking-[0.2em] text-slate-400; }
+  .hud-value { @apply font-mono text-sm font-semibold text-slate-100; }
+  .neon-cyan { @apply text-hud-cyan drop-shadow-[0_0_6px_rgba(34,211,238,0.8)]; }
+  .neon-red { @apply text-hud-red drop-shadow-[0_0_6px_rgba(239,68,68,0.8)]; }
+  .neon-amber { @apply text-hud-amber drop-shadow-[0_0_6px_rgba(245,158,11,0.8)]; }
+}
+
+.maplibregl-ctrl-attrib { @apply bg-slate-900/70 text-slate-400 text-[10px]; }
+.maplibregl-popup-content { @apply bg-slate-900/95 text-slate-100 font-mono text-xs border border-slate-700 rounded-md shadow-glow-cyan; }
+.maplibregl-popup-tip { border-top-color: rgb(15 23 42 / 0.95) !important; }

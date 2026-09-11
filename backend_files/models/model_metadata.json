@@ -1,0 +1,31 @@
+{
+  "model_type": "RandomForestClassifier + IsolationForest",
+  "n_estimators_rf": 150,
+  "n_estimators_iso": 120,
+  "classes": [
+    "INDUSTRIAL_FIRE",
+    "GAS_FLARE",
+    "AGRICULTURAL_BURNING",
+    "MINING_ACTIVITY",
+    "WILDFIRE",
+    "PERSISTENT_THERMAL"
+  ],
+  "features": [
+    "frp",
+    "brightness",
+    "distance_to_facility",
+    "hour",
+    "persistence_days",
+    "land_cover_code"
+  ],
+  "training_samples": 4800,
+  "validation_accuracy": 91.9,
+  "feature_importances": {
+    "frp": 0.1478,
+    "brightness": 0.0977,
+    "distance_to_facility": 0.2281,
+    "hour": 0.0105,
+    "persistence_days": 0.2175,
+    "land_cover_code": 0.2985
+  }
+}

@@ -1,0 +1,1883 @@
+[
+  {
+    "id": "CORE_FAC_TATA_MITHAPUR",
+    "name": "Tata Chemicals Salt Factory (Mithapur)",
+    "type": "Chemical & Salt Plant",
+    "lat": 22.4065,
+    "lng": 69.01097,
+    "buffer_km": 3.0,
+    "baseline_frp": 15.0
+  },
+  {
+    "id": "CORE_FAC_001",
+    "name": "Jamnagar Refinery Complex (Reliance)",
+    "type": "Oil & Gas Refinery",
+    "lat": 22.3562,
+    "lng": 69.8686,
+    "buffer_km": 5.0,
+    "baseline_frp": 65.0
+  },
+  {
+    "id": "CORE_FAC_002",
+    "name": "Mundra Thermal Power Station (Adani/Tata)",
+    "type": "Thermal Power",
+    "lat": 22.8242,
+    "lng": 69.5298,
+    "buffer_km": 4.0,
+    "baseline_frp": 45.0
+  },
+  {
+    "id": "CORE_FAC_003",
+    "name": "Bhilai Steel Plant (SAIL)",
+    "type": "Iron & Steel",
+    "lat": 21.1834,
+    "lng": 81.3857,
+    "buffer_km": 4.5,
+    "baseline_frp": 50.0
+  },
+  {
+    "id": "CORE_FAC_004",
+    "name": "Rourkela Steel Plant (SAIL)",
+    "type": "Iron & Steel",
+    "lat": 22.2289,
+    "lng": 84.8728,
+    "buffer_km": 4.5,
+    "baseline_frp": 50.0
+  },
+  {
+    "id": "CORE_FAC_005",
+    "name": "Tata Steel Jamshedpur",
+    "type": "Iron & Steel",
+    "lat": 22.7925,
+    "lng": 86.195,
+    "buffer_km": 4.5,
+    "baseline_frp": 55.0
+  },
+  {
+    "id": "CORE_FAC_006",
+    "name": "Numaligarh Refinery (NRL)",
+    "type": "Oil & Gas Refinery",
+    "lat": 26.5684,
+    "lng": 93.7719,
+    "buffer_km": 3.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "CORE_FAC_007",
+    "name": "Mangalore Refinery and Petrochemicals (MRPL)",
+    "type": "Oil & Gas Refinery",
+    "lat": 12.9934,
+    "lng": 74.8322,
+    "buffer_km": 4.0,
+    "baseline_frp": 40.0
+  },
+  {
+    "id": "CORE_FAC_008",
+    "name": "Kochi Refinery (BPCL)",
+    "type": "Oil & Gas Refinery",
+    "lat": 9.9577,
+    "lng": 76.3601,
+    "buffer_km": 4.0,
+    "baseline_frp": 40.0
+  },
+  {
+    "id": "CORE_FAC_009",
+    "name": "Paradip Refinery (IOCL)",
+    "type": "Oil & Gas Refinery",
+    "lat": 20.2644,
+    "lng": 86.6433,
+    "buffer_km": 4.5,
+    "baseline_frp": 55.0
+  },
+  {
+    "id": "CORE_FAC_010",
+    "name": "NTPC Vindhyachal Super Thermal",
+    "type": "Thermal Power",
+    "lat": 24.1006,
+    "lng": 82.6719,
+    "buffer_km": 4.0,
+    "baseline_frp": 45.0
+  },
+  {
+    "id": "CORE_FAC_011",
+    "name": "NTPC Singrauli Thermal",
+    "type": "Thermal Power",
+    "lat": 24.12,
+    "lng": 82.71,
+    "buffer_km": 3.5,
+    "baseline_frp": 40.0
+  },
+  {
+    "id": "CORE_FAC_012",
+    "name": "NTPC Ramagundam",
+    "type": "Thermal Power",
+    "lat": 18.7564,
+    "lng": 79.4526,
+    "buffer_km": 3.5,
+    "baseline_frp": 40.0
+  },
+  {
+    "id": "CORE_FAC_013",
+    "name": "NTPC Talcher Super Thermal",
+    "type": "Thermal Power",
+    "lat": 20.95,
+    "lng": 85.05,
+    "buffer_km": 4.0,
+    "baseline_frp": 40.0
+  },
+  {
+    "id": "CORE_FAC_014",
+    "name": "NTPC Korba Super Thermal",
+    "type": "Thermal Power",
+    "lat": 22.385,
+    "lng": 82.682,
+    "buffer_km": 3.5,
+    "baseline_frp": 40.0
+  },
+  {
+    "id": "CORE_FAC_015",
+    "name": "JSW Steel Vijayanagar",
+    "type": "Iron & Steel",
+    "lat": 15.1764,
+    "lng": 76.6719,
+    "buffer_km": 5.0,
+    "baseline_frp": 55.0
+  },
+  {
+    "id": "CORE_FAC_016",
+    "name": "Durgapur Steel Plant",
+    "type": "Iron & Steel",
+    "lat": 23.55,
+    "lng": 87.28,
+    "buffer_km": 4.0,
+    "baseline_frp": 45.0
+  },
+  {
+    "id": "CORE_FAC_017",
+    "name": "Bokaro Steel Plant",
+    "type": "Iron & Steel",
+    "lat": 23.67,
+    "lng": 86.15,
+    "buffer_km": 4.5,
+    "baseline_frp": 45.0
+  },
+  {
+    "id": "CORE_FAC_018",
+    "name": "Vizag Steel (RINL)",
+    "type": "Iron & Steel",
+    "lat": 17.6322,
+    "lng": 83.1819,
+    "buffer_km": 4.5,
+    "baseline_frp": 50.0
+  },
+  {
+    "id": "CORE_FAC_019",
+    "name": "IOCL Panipat Refinery & Petrochem",
+    "type": "Petrochemical",
+    "lat": 29.46,
+    "lng": 76.92,
+    "buffer_km": 4.5,
+    "baseline_frp": 45.0
+  },
+  {
+    "id": "CORE_FAC_020",
+    "name": "IOCL Mathura Refinery",
+    "type": "Oil & Gas Refinery",
+    "lat": 27.42,
+    "lng": 77.68,
+    "buffer_km": 3.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "CORE_FAC_021",
+    "name": "IOCL Vadodara (Gujarat Refinery)",
+    "type": "Oil & Gas Refinery",
+    "lat": 22.36,
+    "lng": 73.13,
+    "buffer_km": 4.0,
+    "baseline_frp": 40.0
+  },
+  {
+    "id": "CORE_FAC_022",
+    "name": "HPCL Mittal Energy Bathinda Refinery",
+    "type": "Oil & Gas Refinery",
+    "lat": 29.98,
+    "lng": 75.02,
+    "buffer_km": 4.0,
+    "baseline_frp": 40.0
+  },
+  {
+    "id": "CORE_FAC_023",
+    "name": "Hazira Industrial & LNG Terminal",
+    "type": "Petrochemical / LNG",
+    "lat": 21.11,
+    "lng": 72.65,
+    "buffer_km": 5.0,
+    "baseline_frp": 50.0
+  },
+  {
+    "id": "CORE_FAC_024",
+    "name": "Dahej Petrochemical Complex",
+    "type": "Chemical Hub",
+    "lat": 21.71,
+    "lng": 72.58,
+    "buffer_km": 5.0,
+    "baseline_frp": 45.0
+  },
+  {
+    "id": "CORE_FAC_025",
+    "name": "Ankleshwar GIDC Chemical Zone",
+    "type": "Chemical Hub",
+    "lat": 21.63,
+    "lng": 73.01,
+    "buffer_km": 4.0,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_N_2377020712",
+    "name": "Thathri Hydel Plant",
+    "type": "Hydro",
+    "lat": 32.23068,
+    "lng": 76.36619,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_N_2391087899",
+    "name": "Shadab Textile",
+    "type": "Industrial",
+    "lat": 31.58416,
+    "lng": 73.51725,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_N_2391087949",
+    "name": "Kashir Textile Mills Ltd",
+    "type": "Industrial",
+    "lat": 31.58636,
+    "lng": 73.5371,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_N_2395008471",
+    "name": "Neelum Textile",
+    "type": "Industrial",
+    "lat": 31.66395,
+    "lng": 73.93504,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_N_3886020110",
+    "name": "Chibro Power Plant",
+    "type": "Hydro",
+    "lat": 30.55709,
+    "lng": 77.79683,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_N_4306315916",
+    "name": "Shandar Flour Mill",
+    "type": "Industrial",
+    "lat": 32.26413,
+    "lng": 71.52156,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_N_4306486404",
+    "name": "Bahata Industrial State",
+    "type": "Industrial",
+    "lat": 32.14186,
+    "lng": 71.25253,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_N_4306553033",
+    "name": "Ice Factory",
+    "type": "Industrial",
+    "lat": 30.77825,
+    "lng": 71.22716,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_N_4316746105",
+    "name": "Pak-kuwait Textile Mill",
+    "type": "Industrial",
+    "lat": 32.29719,
+    "lng": 72.25187,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_N_4316750502",
+    "name": "Jauharabad Sugar Mills Limited",
+    "type": "Industrial",
+    "lat": 32.30577,
+    "lng": 72.27268,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_N_4316754584",
+    "name": "Brick Bhatta",
+    "type": "Industrial",
+    "lat": 32.26042,
+    "lng": 72.31658,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_N_4319175286",
+    "name": "Unit 3 Colony Mills Limt",
+    "type": "Industrial",
+    "lat": 30.13473,
+    "lng": 71.37093,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_N_4319196968",
+    "name": "Paper Link Pipe Factory",
+    "type": "Industrial",
+    "lat": 30.07869,
+    "lng": 71.49387,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_N_4319196972",
+    "name": "Madni Foods Zafar Dall Mills",
+    "type": "Industrial",
+    "lat": 30.09742,
+    "lng": 71.45326,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_N_4320037474",
+    "name": "Al Noor Floor Mills",
+    "type": "Industrial",
+    "lat": 31.42571,
+    "lng": 71.23601,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_N_4320076290",
+    "name": "Al Rahim Floor Mills",
+    "type": "Industrial",
+    "lat": 31.22751,
+    "lng": 71.21599,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_N_4326999653",
+    "name": "Shirazi Poultry",
+    "type": "Industrial",
+    "lat": 31.20282,
+    "lng": 71.20653,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_N_4395763159",
+    "name": "Karachi Pioneer Textile Mills",
+    "type": "Industrial",
+    "lat": 30.15108,
+    "lng": 71.22501,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_N_4395774525",
+    "name": "\u0639\u0644\u0627\u0645\u06c1 \u0627\u0642\u0628\u0627\u0644 \u0679\u0627\u0624\u0646 \u0645\u0638\u0641\u0631 \u06af\u0691\u06be",
+    "type": "Industrial",
+    "lat": 30.07122,
+    "lng": 71.12281,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_N_4397245497",
+    "name": "Sheikhoo Sugar Mill Circular Office",
+    "type": "Industrial",
+    "lat": 30.19411,
+    "lng": 70.95642,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_N_4755934139",
+    "name": "Armat Cola Factory",
+    "type": "Industrial",
+    "lat": 30.30577,
+    "lng": 71.50525,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_N_4798444517",
+    "name": "Yusibra Salt Factory",
+    "type": "Industrial",
+    "lat": 32.33337,
+    "lng": 71.90082,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_N_4976487056",
+    "name": "Barahi Main Power Station",
+    "type": "Plant",
+    "lat": 28.7341,
+    "lng": 76.89535,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_N_5133545326",
+    "name": "Sundar Industrial Estate",
+    "type": "Industrial",
+    "lat": 31.28519,
+    "lng": 74.169,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_N_5149922261",
+    "name": "Fatima Protein Farms",
+    "type": "Industrial",
+    "lat": 30.35366,
+    "lng": 71.00485,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_N_5233344664",
+    "name": "Vohra Cold Storage & Ice Factory",
+    "type": "Warehouse",
+    "lat": 31.61103,
+    "lng": 74.2517,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_N_5358673734",
+    "name": "Vimal Metal Industries",
+    "type": "Factory",
+    "lat": 28.05706,
+    "lng": 81.61616,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_N_5377378535",
+    "name": "North Industrial Cluster #53",
+    "type": "Grinding mill",
+    "lat": 28.11427,
+    "lng": 81.66577,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_N_5377630417",
+    "name": "Bhagwan Grill Udhyog",
+    "type": "Factory",
+    "lat": 28.10051,
+    "lng": 81.65525,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_N_5415737167",
+    "name": "Ganesh Rice Mill",
+    "type": "Grinding mill",
+    "lat": 28.05463,
+    "lng": 81.6064,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_N_5420522961",
+    "name": "Krishna Rice Mill",
+    "type": "Grinding mill",
+    "lat": 28.07012,
+    "lng": 81.67392,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_N_6213949642",
+    "name": "Veterinary shop",
+    "type": "Business",
+    "lat": 29.65696,
+    "lng": 81.86432,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_N_7847783226",
+    "name": "North Industrial Cluster #58",
+    "type": "Plant",
+    "lat": 29.70355,
+    "lng": 77.86074,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_N_8314476497",
+    "name": "Badimalika falful prasodhan udhyog",
+    "type": "Factory",
+    "lat": 29.27295,
+    "lng": 81.64552,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_N_8460552570",
+    "name": "HMT Fruit Processing Center",
+    "type": "Factory",
+    "lat": 28.74015,
+    "lng": 80.58087,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_N_8665936347",
+    "name": "North Industrial Cluster #61",
+    "type": "Industrial",
+    "lat": 27.84699,
+    "lng": 78.32597,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_N_8665936358",
+    "name": "North Industrial Cluster #62",
+    "type": "Industrial",
+    "lat": 27.76498,
+    "lng": 78.31262,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_N_8665936359",
+    "name": "North Industrial Cluster #63",
+    "type": "Industrial",
+    "lat": 27.82425,
+    "lng": 78.32645,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_N_8665936360",
+    "name": "North Industrial Cluster #64",
+    "type": "Industrial",
+    "lat": 27.8328,
+    "lng": 78.32481,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_N_8665936361",
+    "name": "North Industrial Cluster #65",
+    "type": "Industrial",
+    "lat": 27.83786,
+    "lng": 78.32139,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_N_8665936362",
+    "name": "North Industrial Cluster #66",
+    "type": "Industrial",
+    "lat": 27.84628,
+    "lng": 78.31542,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_N_8665936365",
+    "name": "North Industrial Cluster #67",
+    "type": "Industrial",
+    "lat": 27.83928,
+    "lng": 78.31185,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_N_8665936367",
+    "name": "North Industrial Cluster #68",
+    "type": "Industrial",
+    "lat": 27.8461,
+    "lng": 78.31072,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_N_8665936368",
+    "name": "North Industrial Cluster #69",
+    "type": "Industrial",
+    "lat": 27.84814,
+    "lng": 78.30474,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_N_8665936371",
+    "name": "North Industrial Cluster #70",
+    "type": "Industrial",
+    "lat": 27.84992,
+    "lng": 78.28774,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_N_8665936372",
+    "name": "North Industrial Cluster #71",
+    "type": "Industrial",
+    "lat": 27.85354,
+    "lng": 78.26851,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_N_8665936373",
+    "name": "North Industrial Cluster #72",
+    "type": "Industrial",
+    "lat": 27.84924,
+    "lng": 78.27685,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_N_8665936375",
+    "name": "North Industrial Cluster #73",
+    "type": "Industrial",
+    "lat": 27.84395,
+    "lng": 78.26703,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_N_8665936378",
+    "name": "North Industrial Cluster #74",
+    "type": "Industrial",
+    "lat": 27.89131,
+    "lng": 78.30899,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_N_8665936379",
+    "name": "North Industrial Cluster #75",
+    "type": "Industrial",
+    "lat": 27.92273,
+    "lng": 78.29493,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_N_8665936380",
+    "name": "North Industrial Cluster #76",
+    "type": "Industrial",
+    "lat": 27.9251,
+    "lng": 78.29232,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_N_8681472939",
+    "name": "Sawra Kuddu hydro power station",
+    "type": "Hydro",
+    "lat": 31.05596,
+    "lng": 77.82253,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_N_8689595734",
+    "name": "Hydro plant",
+    "type": "Plant",
+    "lat": 32.27949,
+    "lng": 76.30056,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_N_8703128547",
+    "name": "North Industrial Cluster #79",
+    "type": "Industrial",
+    "lat": 27.86385,
+    "lng": 78.24182,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_N_8703128548",
+    "name": "North Industrial Cluster #80",
+    "type": "Industrial",
+    "lat": 27.83148,
+    "lng": 78.21098,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_N_8703128549",
+    "name": "North Industrial Cluster #81",
+    "type": "Industrial",
+    "lat": 27.81744,
+    "lng": 78.23272,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_N_8703128550",
+    "name": "North Industrial Cluster #82",
+    "type": "Industrial",
+    "lat": 27.81336,
+    "lng": 78.23593,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_N_8764485697",
+    "name": "Hydro power",
+    "type": "Plant",
+    "lat": 32.29221,
+    "lng": 76.3028,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_N_8891960405",
+    "name": "North Industrial Cluster #84",
+    "type": "Industrial",
+    "lat": 27.9156,
+    "lng": 78.2338,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_N_9184096670",
+    "name": "North Industrial Cluster #85",
+    "type": "Industrial",
+    "lat": 28.00783,
+    "lng": 78.0525,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_N_9188355361",
+    "name": "North Industrial Cluster #86",
+    "type": "Industrial",
+    "lat": 27.98579,
+    "lng": 77.74077,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_N_9189667732",
+    "name": "North Industrial Cluster #87",
+    "type": "Industrial",
+    "lat": 28.07707,
+    "lng": 77.96977,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_N_9200975006",
+    "name": "North Industrial Cluster #88",
+    "type": "Industrial",
+    "lat": 27.96356,
+    "lng": 77.86705,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_N_9205692722",
+    "name": "North Industrial Cluster #89",
+    "type": "Industrial",
+    "lat": 28.08951,
+    "lng": 78.33437,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_N_9212287567",
+    "name": "North Industrial Cluster #90",
+    "type": "Industrial",
+    "lat": 29.4343,
+    "lng": 77.40351,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_N_9212307959",
+    "name": "North Industrial Cluster #91",
+    "type": "Industrial",
+    "lat": 29.47116,
+    "lng": 77.40517,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_N_9212307960",
+    "name": "North Industrial Cluster #92",
+    "type": "Industrial",
+    "lat": 29.47095,
+    "lng": 77.40121,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_N_9212308365",
+    "name": "North Industrial Cluster #93",
+    "type": "Industrial",
+    "lat": 29.34631,
+    "lng": 77.36822,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_N_9212308368",
+    "name": "North Industrial Cluster #94",
+    "type": "Industrial",
+    "lat": 29.36953,
+    "lng": 77.35371,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_N_9214210540",
+    "name": "North Industrial Cluster #95",
+    "type": "Industrial",
+    "lat": 29.52882,
+    "lng": 77.37953,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_N_9214440236",
+    "name": "North Industrial Cluster #96",
+    "type": "Industrial",
+    "lat": 29.60649,
+    "lng": 77.27846,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_N_9252122080",
+    "name": "Baba Rice Mill",
+    "type": "Rice mill",
+    "lat": 28.0641,
+    "lng": 81.69917,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_N_9378529623",
+    "name": "Sanjay Vidyut hydro power station",
+    "type": "Hydro",
+    "lat": 31.56381,
+    "lng": 77.99044,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_N_9507712798",
+    "name": "North Industrial Cluster #99",
+    "type": "Industrial",
+    "lat": 27.36771,
+    "lng": 81.77396,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_N_9507713651",
+    "name": "North Industrial Cluster #100",
+    "type": "Industrial",
+    "lat": 27.33052,
+    "lng": 81.80822,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_N_9507713652",
+    "name": "North Industrial Cluster #101",
+    "type": "Industrial",
+    "lat": 27.32985,
+    "lng": 81.80278,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_N_9567062291",
+    "name": "Allian Duhangan Hydroelectric Power Plant",
+    "type": "Hydro",
+    "lat": 32.2252,
+    "lng": 77.20656,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_N_10102151074",
+    "name": "Dharma Ghatta",
+    "type": "Grinding mill",
+    "lat": 30.11306,
+    "lng": 81.43226,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_N_10960124162",
+    "name": "North Industrial Cluster #104",
+    "type": "Slaughterhouse",
+    "lat": 25.46411,
+    "lng": 81.86813,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_N_11106924991",
+    "name": "North Industrial Cluster #105",
+    "type": "Brickyard",
+    "lat": 30.14042,
+    "lng": 76.21792,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_N_11242142974",
+    "name": "Poorvanchal bus depot",
+    "type": "Depot",
+    "lat": 28.53465,
+    "lng": 77.17002,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_N_12171240927",
+    "name": "V-Mart Palwal Warehouse",
+    "type": "Warehouse",
+    "lat": 28.20573,
+    "lng": 77.21205,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_N_12698411271",
+    "name": "Cluster Bus Depot Dwarka Sector 22",
+    "type": "Depot",
+    "lat": 28.55418,
+    "lng": 77.05291,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_N_13146724911",
+    "name": "Shershah Cold Storage",
+    "type": "Depot",
+    "lat": 28.71407,
+    "lng": 77.17207,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_N_13345181398",
+    "name": "Naitwar Mori Hydro Power Station",
+    "type": "Hydro",
+    "lat": 31.04177,
+    "lng": 78.06004,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_N_13875824112",
+    "name": "Anjali Atta Chakki and Masala Chakki",
+    "type": "Grinding mill",
+    "lat": 28.36106,
+    "lng": 77.07647,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_N_13987520164",
+    "name": "Shanker Agencies Private Limited",
+    "type": "Refractory supplier",
+    "lat": 28.67609,
+    "lng": 77.29563,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_W_27035476",
+    "name": "North Industrial Cluster #113",
+    "type": "Industrial",
+    "lat": 28.46987,
+    "lng": 77.05303,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_W_28208819",
+    "name": "Sector 5",
+    "type": "Industrial",
+    "lat": 28.58887,
+    "lng": 77.32168,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_W_28240487",
+    "name": "Sector 4",
+    "type": "Industrial",
+    "lat": 28.58353,
+    "lng": 77.32303,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_W_28291496",
+    "name": "Steel auto industries",
+    "type": "Industrial",
+    "lat": 30.11347,
+    "lng": 77.24093,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_W_28292741",
+    "name": "\u067e\u0627\u06a9 \u0639\u0631\u0628 \u0641\u0631\u0679\u06cc\u0644\u0627\u0626\u0632\u0631 \u0641\u06cc\u06a9\u0679\u0631\u06cc",
+    "type": "Industrial",
+    "lat": 30.21457,
+    "lng": 71.54087,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_W_28396309",
+    "name": "Deenbandhu Chhotu Ram Thermal Power Station",
+    "type": "Coal",
+    "lat": 30.10542,
+    "lng": 77.32642,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_W_28766936",
+    "name": "North Industrial Cluster #119",
+    "type": "Industrial",
+    "lat": 25.48237,
+    "lng": 81.97411,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_W_28768302",
+    "name": "North Industrial Cluster #120",
+    "type": "Industrial",
+    "lat": 25.43411,
+    "lng": 81.91589,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_W_28769957",
+    "name": "Indian Oil LPG Plant",
+    "type": "Industrial",
+    "lat": 25.42409,
+    "lng": 81.93153,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_W_32552695",
+    "name": "gwalthai industrial area",
+    "type": "Industrial",
+    "lat": 31.4036,
+    "lng": 76.41275,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_W_40837973",
+    "name": "Neesa Foods",
+    "type": "Industrial",
+    "lat": 28.97156,
+    "lng": 77.08862,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_W_43194596",
+    "name": "Hero Honda",
+    "type": "Industrial",
+    "lat": 28.2334,
+    "lng": 76.80546,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_W_43194600",
+    "name": "AtoTech",
+    "type": "Industrial",
+    "lat": 28.25582,
+    "lng": 76.82388,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_W_44350312",
+    "name": "North Industrial Cluster #126",
+    "type": "Industrial",
+    "lat": 28.45601,
+    "lng": 77.00641,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_W_45059289",
+    "name": "Ordinance Equipment Factory",
+    "type": "Industrial",
+    "lat": 26.47094,
+    "lng": 80.36546,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_W_48416609",
+    "name": "North Industrial Cluster #128",
+    "type": "Industrial",
+    "lat": 28.6051,
+    "lng": 77.60798,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_W_57358832",
+    "name": "Noida Special Economic Zone",
+    "type": "Industrial",
+    "lat": 28.54106,
+    "lng": 77.39893,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_W_61431309",
+    "name": "Library Building",
+    "type": "Solar",
+    "lat": 31.47025,
+    "lng": 74.40856,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_W_65453989",
+    "name": "Faridabad Thermal Power Plant",
+    "type": "Gas",
+    "lat": 28.3455,
+    "lng": 77.35993,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_W_66679147",
+    "name": "BHEL",
+    "type": "Industrial",
+    "lat": 25.32659,
+    "lng": 78.5227,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_W_66984987",
+    "name": "Rail Coach Factory - RCF Kapurthala",
+    "type": "Factory",
+    "lat": 31.31078,
+    "lng": 75.33894,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_W_67195450",
+    "name": "Kota Thermal Power Station",
+    "type": "Coal",
+    "lat": 25.17097,
+    "lng": 75.81445,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_W_70534891",
+    "name": "AMPM Fashions Private Limited",
+    "type": "Textile",
+    "lat": 28.59038,
+    "lng": 77.33221,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_W_71221209",
+    "name": "Sector 11",
+    "type": "Industrial",
+    "lat": 28.59871,
+    "lng": 77.33463,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_W_71297383",
+    "name": "Sector 7",
+    "type": "Industrial",
+    "lat": 28.59501,
+    "lng": 77.31658,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_W_71444961",
+    "name": "Sector 1",
+    "type": "Industrial",
+    "lat": 28.59036,
+    "lng": 77.31239,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_W_71621507",
+    "name": "Sector 57",
+    "type": "Industrial",
+    "lat": 28.60497,
+    "lng": 77.35353,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_W_71644071",
+    "name": "Sector 60",
+    "type": "Industrial",
+    "lat": 28.60239,
+    "lng": 77.36704,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_W_71649651",
+    "name": "Sector 59",
+    "type": "Industrial",
+    "lat": 28.60808,
+    "lng": 77.36762,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_W_71651922",
+    "name": "Sector 58",
+    "type": "Industrial",
+    "lat": 28.606,
+    "lng": 77.35796,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_W_71686902",
+    "name": "Sector 65",
+    "type": "Industrial",
+    "lat": 28.61181,
+    "lng": 77.38533,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_W_71834192",
+    "name": "Sector 67",
+    "type": "Industrial",
+    "lat": 28.60507,
+    "lng": 77.38489,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_W_71834194",
+    "name": "North Industrial Cluster #145",
+    "type": "Industrial",
+    "lat": 28.62273,
+    "lng": 77.38676,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_W_71866019",
+    "name": "Sector 84A",
+    "type": "Industrial",
+    "lat": 28.53244,
+    "lng": 77.40758,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_W_71866024",
+    "name": "Sector 83",
+    "type": "Industrial",
+    "lat": 28.52461,
+    "lng": 77.39832,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_W_72004862",
+    "name": "North Industrial Cluster #148",
+    "type": "Industrial",
+    "lat": 28.65111,
+    "lng": 77.32991,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_W_72519025",
+    "name": "North Industrial Cluster #149",
+    "type": "Industrial",
+    "lat": 31.44144,
+    "lng": 73.08221,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_W_72555606",
+    "name": "Chokera Sewage Treatment Works",
+    "type": "Industrial",
+    "lat": 31.45907,
+    "lng": 73.00444,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_W_72619375",
+    "name": "Crescent Textile Mills",
+    "type": "Industrial",
+    "lat": 31.45145,
+    "lng": 73.08883,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_W_72622350",
+    "name": "Sui Gas",
+    "type": "Industrial",
+    "lat": 31.46559,
+    "lng": 73.0779,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_W_72915638",
+    "name": "\u067e\u06cc\u067e\u0633\u06cc \u06a9\u0648\u0644\u0627",
+    "type": "Industrial",
+    "lat": 31.37776,
+    "lng": 73.07028,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_W_73749581",
+    "name": "North Industrial Cluster #154",
+    "type": "Industrial",
+    "lat": 31.23327,
+    "lng": 72.74448,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_W_73882471",
+    "name": "North Industrial Cluster #155",
+    "type": "Industrial",
+    "lat": 31.23827,
+    "lng": 72.77658,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_W_74168430",
+    "name": "North Industrial Cluster #156",
+    "type": "Industrial",
+    "lat": 28.65545,
+    "lng": 77.33598,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_W_76700057",
+    "name": "North Industrial Cluster #157",
+    "type": "Industrial",
+    "lat": 28.65509,
+    "lng": 77.32698,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_W_76849193",
+    "name": "North Industrial Cluster #158",
+    "type": "Depot",
+    "lat": 28.62076,
+    "lng": 77.30096,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_W_77001373",
+    "name": "M.E.A. Stores",
+    "type": "Industrial",
+    "lat": 28.60108,
+    "lng": 77.30118,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_W_78502882",
+    "name": "uggi adda",
+    "type": "Industrial",
+    "lat": 31.21437,
+    "lng": 75.42306,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_W_78542610",
+    "name": "Rithala Power Plant",
+    "type": "Gas",
+    "lat": 28.73307,
+    "lng": 77.10179,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_W_78799847",
+    "name": "Wastewater Treatment Plant",
+    "type": "Industrial",
+    "lat": 28.72795,
+    "lng": 77.18572,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_W_80511305",
+    "name": "Sewage Treatment Plant - Okhla",
+    "type": "Industrial",
+    "lat": 28.54713,
+    "lng": 77.28346,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_W_80511312",
+    "name": "Tughlakabad Inland Container Depot",
+    "type": "Industrial",
+    "lat": 28.50907,
+    "lng": 77.28904,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_W_81511974",
+    "name": "Pali Stone Crusher Zone II",
+    "type": "Grinding mill",
+    "lat": 28.38914,
+    "lng": 77.22255,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_W_86472982",
+    "name": "North Industrial Cluster #166",
+    "type": "Industrial",
+    "lat": 31.67488,
+    "lng": 74.88384,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_W_93076075",
+    "name": "Rai Industrial Area",
+    "type": "Industrial",
+    "lat": 28.93051,
+    "lng": 77.09013,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_W_97363540",
+    "name": "Mini Power Plant",
+    "type": "Hydro",
+    "lat": 30.78314,
+    "lng": 75.83378,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_W_101225505",
+    "name": "Internal Street",
+    "type": "Industrial",
+    "lat": 26.82039,
+    "lng": 80.90458,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_W_101848549",
+    "name": "North Industrial Cluster #170",
+    "type": "Industrial",
+    "lat": 24.59554,
+    "lng": 80.8592,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_W_101848551",
+    "name": "North Industrial Cluster #171",
+    "type": "Industrial",
+    "lat": 24.59516,
+    "lng": 80.84733,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_W_103164993",
+    "name": "North Industrial Cluster #172",
+    "type": "Industrial",
+    "lat": 30.8437,
+    "lng": 76.93006,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_W_103170664",
+    "name": "FCI",
+    "type": "Industrial",
+    "lat": 28.73992,
+    "lng": 77.77078,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_W_103170709",
+    "name": "Dadri Powerplant",
+    "type": "Coal;gas",
+    "lat": 28.59266,
+    "lng": 77.61574,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_W_104222937",
+    "name": "IFFCO",
+    "type": "Industrial",
+    "lat": 28.22612,
+    "lng": 79.24805,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_W_104567860",
+    "name": "Narora Atomic Power Station",
+    "type": "Nuclear",
+    "lat": 28.15532,
+    "lng": 78.40797,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_W_104688380",
+    "name": "North Industrial Cluster #177",
+    "type": "Industrial",
+    "lat": 29.97574,
+    "lng": 78.22164,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_W_104799261",
+    "name": "National Fertilizer Limited",
+    "type": "Industrial",
+    "lat": 30.24901,
+    "lng": 74.91765,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_W_104799276",
+    "name": "North Industrial Cluster #179",
+    "type": "Industrial",
+    "lat": 30.23294,
+    "lng": 74.91281,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_W_104805106",
+    "name": "Suratgarh Super Thermal Power Plant",
+    "type": "Coal",
+    "lat": 29.17163,
+    "lng": 74.01734,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_W_104805109",
+    "name": "Hindustan Petroleum Oil Depot",
+    "type": "Industrial",
+    "lat": 30.16159,
+    "lng": 74.98244,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_W_105646132",
+    "name": "Khara Power Plant",
+    "type": "Hydro",
+    "lat": 30.3508,
+    "lng": 77.60174,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_W_108887676",
+    "name": "Dana Mandi",
+    "type": "Industrial",
+    "lat": 30.4037,
+    "lng": 74.03544,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_W_109300867",
+    "name": "North Industrial Cluster #184",
+    "type": "Industrial",
+    "lat": 31.21519,
+    "lng": 75.42413,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_W_111515218",
+    "name": "North Industrial Cluster #185",
+    "type": "Industrial",
+    "lat": 27.66341,
+    "lng": 78.25047,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_W_115707361",
+    "name": "North Industrial Cluster #186",
+    "type": "Industrial",
+    "lat": 27.11085,
+    "lng": 72.37124,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_W_118373630",
+    "name": "FCI godowns 2",
+    "type": "Industrial",
+    "lat": 30.59923,
+    "lng": 74.25476,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_W_118923129",
+    "name": "North Industrial Cluster #188",
+    "type": "Industrial",
+    "lat": 30.16973,
+    "lng": 78.12304,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_W_118932630",
+    "name": "North Industrial Cluster #189",
+    "type": "Industrial",
+    "lat": 29.59996,
+    "lng": 78.3296,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_W_119157170",
+    "name": "North Industrial Cluster #190",
+    "type": "Industrial",
+    "lat": 24.57243,
+    "lng": 80.82708,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_W_119242828",
+    "name": "North Industrial Cluster #191",
+    "type": "Industrial",
+    "lat": 26.0338,
+    "lng": 76.36772,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_W_119242832",
+    "name": "North Industrial Cluster #192",
+    "type": "Industrial",
+    "lat": 26.04543,
+    "lng": 76.37542,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_W_120015461",
+    "name": "North Industrial Cluster #193",
+    "type": "Industrial",
+    "lat": 26.94881,
+    "lng": 81.18915,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_W_120020056",
+    "name": "North Industrial Cluster #194",
+    "type": "Industrial",
+    "lat": 26.2304,
+    "lng": 81.26952,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_W_120666186",
+    "name": "North Industrial Cluster #195",
+    "type": "Industrial",
+    "lat": 29.79218,
+    "lng": 78.40944,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "OSM_W_122030564",
+    "name": "Kotla Power House",
+    "type": "Hydro",
+    "lat": 31.21315,
+    "lng": 76.54917,
+    "buffer_km": 4.5,
+    "baseline_frp": 35.0
+  },
+  {
+    "id": "CORE_FAC_WELSPUN_ANJAR",
+    "name": "Welspun DI Limited (Anjar)",
+    "type": "Steel / Manufacturing Plant",
+    "lat": 23.12,
+    "lng": 70.085,
+    "region": "Gujarat",
+    "priority": "HIGH"
+  },
+  {
+    "id": "CORE_FAC_JSW_PLATE_MILL",
+    "name": "JSW Plate Mill",
+    "type": "Steel Plant",
+    "lat": 23.115,
+    "lng": 70.07,
+    "region": "Gujarat",
+    "priority": "HIGH"
+  },
+  {
+    "id": "CORE_FAC_WELSPUN_METALLIC",
+    "name": "Welspun Corp Ltd (Metallic Div)",
+    "type": "Steel / Manufacturing Plant",
+    "lat": 23.112,
+    "lng": 70.088,
+    "region": "Gujarat",
+    "priority": "HIGH"
+  },
+  {
+    "id": "CORE_FAC_OZONE_PROCON",
+    "name": "Ozone Procon Pvt Ltd",
+    "type": "Manufacturing Plant",
+    "lat": 23.105,
+    "lng": 70.082,
+    "region": "Gujarat",
+    "priority": "MEDIUM"
+  },
+  {
+    "id": "CORE_FAC_HMEL_REFINERY",
+    "name": "Guru Gobind Singh Refinery (HMEL)",
+    "type": "Oil & Gas Refinery",
+    "lat": 29.93,
+    "lng": 74.95,
+    "region": "Punjab",
+    "priority": "CRITICAL"
+  },
+  {
+    "id": "FAC_SHREE_CEMENT_BEAWAR",
+    "name": "Shree Cement Ltd (Beawar)",
+    "type": "Cement Manufacturing Plant",
+    "lat": 26.26633,
+    "lng": 74.18793,
+    "buffer_km": 3.0,
+    "baseline_frp": 25.0
+  },
+  {
+    "id": "FAC_SHREE_CEMENT_RAS",
+    "name": "Shree Cement Plant (Ras)",
+    "type": "Cement Manufacturing Plant",
+    "lat": 26.312,
+    "lng": 74.175,
+    "buffer_km": 3.0,
+    "baseline_frp": 25.0
+  },
+  {
+    "id": "FAC_AMBUJA_RABRIYAWAS",
+    "name": "Ambuja Cement Plant (Rabriyawas)",
+    "type": "Cement Manufacturing Plant",
+    "lat": 26.275,
+    "lng": 74.055,
+    "buffer_km": 3.0,
+    "baseline_frp": 25.0
+  },
+  {
+    "id": "FAC_ULTRATECH_KOTPUTLI",
+    "name": "UltraTech Cement Works (Kotputli)",
+    "type": "Cement Manufacturing Plant",
+    "lat": 27.705,
+    "lng": 76.208,
+    "buffer_km": 3.0,
+    "baseline_frp": 25.0
+  },
+  {
+    "id": "FAC_JK_CEMENT_NIMBAHERA",
+    "name": "JK Cement Works (Nimbahera)",
+    "type": "Cement Manufacturing Plant",
+    "lat": 24.621,
+    "lng": 74.685,
+    "buffer_km": 3.0,
+    "baseline_frp": 25.0
+  },
+  {
+    "id": "FAC_WONDER_CEMENT_NIMBAHERA",
+    "name": "Wonder Cement Plant (Nimbahera)",
+    "type": "Cement Manufacturing Plant",
+    "lat": 24.582,
+    "lng": 74.653,
+    "buffer_km": 3.0,
+    "baseline_frp": 25.0
+  },
+  {
+    "id": "FAC_HMEL_BATHINDA",
+    "name": "Guru Gobind Singh Refinery Complex (HMEL Bathinda)",
+    "type": "Oil & Gas Refinery",
+    "lat": 29.92161,
+    "lng": 74.95422,
+    "buffer_km": 4.0,
+    "baseline_frp": 40.0
+  }
+]

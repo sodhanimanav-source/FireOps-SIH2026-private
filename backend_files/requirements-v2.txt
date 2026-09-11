@@ -1,0 +1,10 @@
+lightgbm
+scikit-learn
+geopandas
+pyarrow
+shapely
+rasterio
+pyrosm
+joblib
+tqdm
+requests

@@ -1,0 +1,249 @@
+import { useEffect, useMemo, useRef, useState } from "react";
+import maplibregl, { Map as MLMap } from "maplibre-gl";
+import { motion } from "framer-motion";
+import { Layers, Satellite, Target } from "lucide-react";
+import type { FeatureCollection, Point } from "geojson";
+import { useInfrastructure, useScenarios } from "@/api/client";
+import type { WindowClusterProperties, WindowFeature } from "@/api/types";
+import { CLASS_MATCH_EXPR } from "@/lib/theme";
+import { HYBRID_STYLE, DARK_STYLE } from "@/lib/mapStyles";
+import { SEVERITY_THEMES } from "@/lib/severityTheme";
+import { useAppStore } from "@/store/useAppStore";
+import { useVisibleFeatures } from "@/store/useAppStore";
+
+const SRC_HOT = "hotspots", SRC_INFRA = "infra";
+const EMPTY: FeatureCollection = { type: "FeatureCollection", features: [] };
+
+function installLayers(map: MLMap) {
+  if (!map.getSource(SRC_INFRA)) map.addSource(SRC_INFRA, { type: "geojson", data: EMPTY });
+  
+  if (!map.getSource(SRC_HOT)) {
+    map.addSource(SRC_HOT, {
+      type: "geojson", data: EMPTY, promoteId: "cluster_id",
+      cluster: true, clusterMaxZoom: 9, clusterRadius: 45,
+      clusterProperties: {
+        anomalies: ["+", ["case", [">", ["get", "m_score"], 3.5], 1, 0]],
+        frp: ["+", ["get", "frp_mean"]],
+        critical: ["+", ["case", ["==", ["get", "priority"], "CRITICAL"], 1, 0]],
+      },
+    });
+  }
+  
+  if (!map.getSource("choropleth")) {
+    map.addSource("choropleth", { type: "geojson", data: EMPTY, promoteId: "name" });
+  }
+
+  // Choropleth layers (bottom-most)
+  map.addLayer({ id: "adm-fill", type: "fill", source: "choropleth", maxzoom: 6.5,
+    paint: { "fill-color": ["interpolate", ["linear"], ["get", "anomalies"], 0, "rgba(34,211,238,0.05)", 1, "rgba(245,158,11,0.35)", 5, "rgba(239,68,68,0.55)"],
+             "fill-outline-color": "rgba(148,163,184,0.4)" } });
+  map.addLayer({ id: "adm-hover", type: "line", source: "choropleth", maxzoom: 6.5,
+    paint: { "line-color": "#22d3ee", "line-width": ["case", ["boolean", ["feature-state", "hover"], false], 2.5, 0] } });
+
+  // Heatmap layer
+  map.addLayer({
+    id: "hot-heatmap", type: "heatmap", source: SRC_HOT, minzoom: 5, maxzoom: 9,
+    paint: {
+      "heatmap-weight": ["interpolate", ["linear"], ["get", "frp_mean"], 0, 0, 100, 1],
+      "heatmap-intensity": ["interpolate", ["linear"], ["zoom"], 5, 1, 9, 3],
+      "heatmap-color": ["interpolate", ["linear"], ["heatmap-density"], 0, "rgba(0,0,255,0)", 0.2, "royalblue", 0.4, "cyan", 0.6, "lime", 0.8, "yellow", 1, "red"],
+      "heatmap-radius": ["interpolate", ["linear"], ["zoom"], 5, 15, 9, 20],
+      "heatmap-opacity": 0.6
+    }
+  });
+
+  // Infra layers
+  map.addLayer({ id: "infra-fill", type: "fill", source: SRC_INFRA, paint: { "fill-color": "#22d3ee", "fill-opacity": 0.06 } });
+  map.addLayer({ id: "infra-glow", type: "line", source: SRC_INFRA, paint: { "line-color": "#22d3ee", "line-width": 7, "line-opacity": 0.25, "line-blur": 6 } });
+  map.addLayer({ id: "infra-line", type: "line", source: SRC_INFRA, paint: { "line-color": "#67e8f9", "line-width": 1.5 } });
+
+  // Cluster bubbles
+  map.addLayer({ id: "hot-cluster", type: "circle", source: SRC_HOT, filter: ["has", "point_count"],
+    paint: {
+      "circle-radius": ["interpolate", ["linear"], ["get", "point_count"], 2, 14, 50, 26, 500, 42],
+      "circle-color": ["case", [">", ["get", "critical"], 0], "#ef4444", [">", ["get", "anomalies"], 0], "#f59e0b", "#22d3ee"],
+      "circle-opacity": 0.75, "circle-stroke-width": 2, "circle-stroke-color": "#0f172a" } });
+  map.addLayer({ id: "hot-cluster-label", type: "symbol", source: SRC_HOT, filter: ["has", "point_count"],
+    layout: { "text-field": ["concat", ["get", "point_count"], ["case", [">", ["get", "anomalies"], 0], ["concat", "\n⚠", ["get", "anomalies"]], ""]],
+              "text-size": 11, "text-font": ["Open Sans Bold"] },
+    paint: { "text-color": "#020617" } });
+
+  // Individual points
+  const radius: any = ["interpolate", ["linear"], ["sqrt", ["coalesce", ["get", "frp_mean"], 1]], 0, 3, 3, 5, 10, 10, 20, 18];
+  const ageOpacity: any = ["interpolate", ["linear"], ["coalesce", ["get", "age"], 0], 0, 0.95, 3, 0.55, 6, 0.25];
+
+  map.addLayer({ id: "hot-halo", type: "circle", source: SRC_HOT, filter: ["!", ["has", "point_count"]],
+    paint: { "circle-color": CLASS_MATCH_EXPR as any, "circle-blur": 0.9, "circle-radius": ["*", radius, 2.2], "circle-opacity": ["*", ageOpacity, 0.3] } });
+  map.addLayer({ id: "hot-core", type: "circle", source: SRC_HOT, filter: ["!", ["has", "point_count"]],
+    paint: { "circle-color": CLASS_MATCH_EXPR as any, "circle-radius": radius, "circle-opacity": ageOpacity,
+      "circle-stroke-width": ["case", [">", ["get", "m_score"], 3.5], 2, 0.6],
+      "circle-stroke-color": ["case", [">", ["get", "m_score"], 3.5], "#ffffff", "#0f172a"] } });
+  map.addLayer({ id: "hot-critical", type: "circle", source: SRC_HOT, filter: ["all", ["!", ["has", "point_count"]], ["==", ["get", "priority"], "CRITICAL"]],
+    paint: { "circle-color": "#ef4444", "circle-opacity": 0.35, "circle-radius": ["*", radius, 3] } });
+  map.addLayer({ id: "hot-selected", type: "circle", source: SRC_HOT, filter: ["==", ["get", "cluster_id"], ""],
+    paint: { "circle-color": "rgba(0,0,0,0)", "circle-stroke-color": "#ffffff", "circle-stroke-width": 2, "circle-radius": ["*", radius, 2.6] } });
+}
+
+export default function TacticalMapModule() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const mapRef = useRef<MLMap | null>(null);
+  const rafRef = useRef<number>();
+  const [basemap, setBasemap] = useState<"hybrid" | "dark">("hybrid");
+  const [heatmapEnabled, setHeatmapEnabled] = useState(false);
+
+  const windowFeatures = useAppStore((s) => s.windowFeatures);
+  const scrubMode = useAppStore((s) => s.scrubMode);
+  const idx = useAppStore((s) => s.currentTimeScrubberIndex);
+  
+  // Notice we now just use all features for map source, and GPU filter handles scrub!
+  const selected = useAppStore((s) => s.selectedAnomaly);
+  const selectAnomaly = useAppStore((s) => s.selectAnomaly);
+  const severity = useAppStore((s) => s.globalSeverityLevel);
+  const theme = SEVERITY_THEMES[severity];
+  const { data: infra } = useInfrastructure();
+  const { data: scenarios } = useScenarios();
+
+  const geojson = useMemo<FeatureCollection<Point, WindowClusterProperties & { age: number }>>(() => ({
+    type: "FeatureCollection",
+    features: windowFeatures.map((f) => ({ ...f, properties: { ...f.properties, age: idx - f.properties.day_index } })),
+  }), [windowFeatures, idx]);
+
+  useEffect(() => {
+    if (!containerRef.current || mapRef.current) return;
+    const map = new maplibregl.Map({ container: containerRef.current, style: HYBRID_STYLE, center: [78.9, 22.5], zoom: 4.4, attributionControl: false });
+    map.addControl(new maplibregl.NavigationControl({ showCompass: false }), "bottom-right");
+    map.addControl(new maplibregl.AttributionControl({ compact: true }), "bottom-right");
+    map.on("load", () => installLayers(map));
+
+    map.on("click", "hot-cluster", async (e: any) => {
+      const f = e.features[0];
+      const zoom = await (map.getSource(SRC_HOT) as maplibregl.GeoJSONSource).getClusterExpansionZoom(f.properties.cluster_id);
+      map.easeTo({ center: f.geometry.coordinates, zoom });
+    });
+
+    map.on("click", "hot-core", (e: any) => {
+      const f = e.features?.[0]; if (!f) return;
+      const p = f.properties;
+      const feature: WindowFeature = {
+        type: "Feature", geometry: f.geometry,
+        properties: { ...p,
+          probabilities: typeof p.probabilities === "string" ? JSON.parse(p.probabilities) : p.probabilities,
+          methane_venting_suspected: String(p.methane_venting_suspected) === "true",
+          m_score: +p.m_score, p_idx: +p.p_idx, night_frac: +p.night_frac, drift_velocity_mpd: +p.drift_velocity_mpd,
+          frp_mean: +p.frp_mean, frp_max: +p.frp_max, n_detections: +p.n_detections, day_index: +p.day_index,
+          vnf_temp_k: p.vnf_temp_k == null || p.vnf_temp_k === "null" ? null : +p.vnf_temp_k },
+      };
+      selectAnomaly(feature);
+      map.flyTo({ center: f.geometry.coordinates, zoom: Math.max(map.getZoom(), 11.5), speed: 0.9 });
+    });
+    map.on("mouseenter", "hot-core", () => (map.getCanvas().style.cursor = "crosshair"));
+    map.on("mouseleave", "hot-core", () => (map.getCanvas().style.cursor = ""));
+    map.on("mouseenter", "hot-cluster", () => (map.getCanvas().style.cursor = "pointer"));
+    map.on("mouseleave", "hot-cluster", () => (map.getCanvas().style.cursor = ""));
+
+    const pulse = (t: number) => {
+      if (map.getLayer("hot-critical")) map.setPaintProperty("hot-critical", "circle-opacity", 0.3 + 0.3 * Math.sin(t / 280));
+      rafRef.current = requestAnimationFrame(pulse);
+    };
+    rafRef.current = requestAnimationFrame(pulse);
+    mapRef.current = map;
+    return () => { if (rafRef.current) cancelAnimationFrame(rafRef.current); map.remove(); mapRef.current = null; };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    const map = mapRef.current; if (!map) return;
+    map.setStyle(basemap === "hybrid" ? HYBRID_STYLE : DARK_STYLE);
+    map.once("styledata", () => {
+      installLayers(map);
+      (map.getSource(SRC_HOT) as maplibregl.GeoJSONSource)?.setData(geojson as any);
+      if (infra) (map.getSource(SRC_INFRA) as maplibregl.GeoJSONSource)?.setData(infra as any);
+      
+      const dayFilter: any = scrubMode === "day" ? ["==", ["get", "day_index"], idx] : ["<=", ["get", "day_index"], idx];
+      ["hot-core", "hot-halo", "hot-critical", "hot-heatmap"].forEach((l) => {
+         if (map.getLayer(l)) map.setFilter(l, ["all", ["!", ["has", "point_count"]], dayFilter]);
+      });
+      map.setLayoutProperty("hot-heatmap", "visibility", heatmapEnabled ? "visible" : "none");
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [basemap]);
+
+  useEffect(() => {
+    const map = mapRef.current; if (!map) return;
+    const apply = () => (map.getSource(SRC_HOT) as maplibregl.GeoJSONSource)?.setData(geojson as any);
+    map.isStyleLoaded() ? apply() : map.once("load", apply);
+  }, [geojson]);
+
+  useEffect(() => {
+    const map = mapRef.current; if (!map || !infra) return;
+    const apply = () => (map.getSource(SRC_INFRA) as maplibregl.GeoJSONSource)?.setData(infra as any);
+    map.isStyleLoaded() ? apply() : map.once("load", apply);
+  }, [infra]);
+
+  useEffect(() => {
+    const map = mapRef.current; if (!map || !map.getLayer("hot-selected")) return;
+    map.setFilter("hot-selected", ["==", ["get", "cluster_id"], selected?.properties.cluster_id ?? ""]);
+  }, [selected]);
+  
+  useEffect(() => {
+    const map = mapRef.current; if (!map) return;
+    if (map.isStyleLoaded() && map.getLayer("hot-heatmap")) {
+      map.setLayoutProperty("hot-heatmap", "visibility", heatmapEnabled ? "visible" : "none");
+    }
+  }, [heatmapEnabled]);
+
+  // Scrubber GPU filter
+  useEffect(() => {
+    const map = mapRef.current; if (!map || !map.isStyleLoaded()) return;
+    if (!map.getLayer("hot-core")) return;
+    const dayFilter: any = scrubMode === "day"
+      ? ["==", ["get", "day_index"], idx]
+      : ["<=", ["get", "day_index"], idx];
+      
+    // Apply to individual points and heatmap
+    ["hot-core", "hot-halo", "hot-critical", "hot-heatmap"].forEach((l) => {
+        if (map.getLayer(l)) map.setFilter(l, ["all", ["!", ["has", "point_count"]], dayFilter]);
+    });
+  }, [idx, scrubMode]);
+
+  return (
+    <motion.section
+      className={`relative h-full w-full overflow-hidden rounded-xl border ${theme.border} ${theme.glow}`}
+      animate={{ boxShadow: theme.pulse ? [`0 0 24px ${theme.accentHex}55`, `0 0 48px ${theme.accentHex}99`, `0 0 24px ${theme.accentHex}55`] : `0 0 24px ${theme.accentHex}33` }}
+      transition={theme.pulse ? { duration: 1.8, repeat: Infinity } : { duration: 0.6 }}
+    >
+      <div ref={containerRef} className="h-full w-full" />
+
+      {/* Module chrome */}
+      <div className={`absolute left-3 top-3 flex items-center gap-2 rounded border px-2 py-1 text-[10px] uppercase tracking-widest ${theme.panel} ${theme.border}`}>
+        <Target className={`h-3 w-3 ${theme.accent}`} /> Tactical Map
+      </div>
+      
+      <div className={`absolute right-3 top-3 flex flex-col gap-2`}>
+        <div className={`flex gap-1 rounded border p-1 ${theme.panel} ${theme.border}`}>
+          {(["hybrid", "dark"] as const).map((b) => (
+            <button key={b} onClick={() => setBasemap(b)}
+              className={`rounded px-2 py-0.5 text-[10px] uppercase ${basemap === b ? `${theme.accent} bg-white/10` : "text-slate-400"}`}>
+              <Layers className="mr-1 inline h-3 w-3" />{b}
+            </button>
+          ))}
+        </div>
+        <div className={`flex gap-1 rounded border p-1 ${theme.panel} ${theme.border}`}>
+          <button onClick={() => setHeatmapEnabled(!heatmapEnabled)}
+              className={`w-full rounded px-2 py-0.5 text-[10px] uppercase ${heatmapEnabled ? "text-amber-400 bg-white/10" : "text-slate-400"}`}>
+              Heatmap {heatmapEnabled ? "ON" : "OFF"}
+          </button>
+        </div>
+      </div>
+      
+      <div className={`absolute bottom-3 left-3 flex max-w-[80%] flex-wrap gap-1 rounded border p-1 ${theme.panel} ${theme.border}`}>
+        <Satellite className="mx-1 mt-1 h-3 w-3 text-amber-400" />
+        {scenarios?.map((s) => (
+          <button key={s.id} onClick={() => mapRef.current?.flyTo({ center: [s.center[1], s.center[0]], zoom: 11.5, pitch: 35 })}
+            className="rounded px-2 py-0.5 text-[10px] text-slate-300 hover:bg-white/10 hover:text-cyan-300">{s.name}</button>
+        ))}
+      </div>
+    </motion.section>
+  );
+}
+

@@ -1,0 +1,42 @@
+SIH FIREOPS - PROJECT RUN INSTRUCTIONS
+=======================================
+
+Bhai, ek baat dhyaan rakhna: 
+Python wale projects me hum `requirements.txt` aur `pip install -r requirements.txt` use karte hain. 
+Lekin Frontend (React/Vite) wala project Node.js pe chalta hai, isliye isme `package.json` file hoti hai aur commands alag hote hain.
+
+Agar tu in files ko kisi naye PC par le ja kar run karna chahta hai, toh ye simple steps follow karna:
+
+---
+
+STEP 1: BACKEND RUN KARNA (Python)
+----------------------------------
+Backend folder me jaa kar ye commands chalana:
+
+1. Dependencies install karne ke liye:
+   pip install fastapi uvicorn pydantic requests
+   (Agar requirements.txt banaya hai toh: pip install -r requirements.txt)
+
+2. Backend Start karne ke liye:
+   python -m uvicorn backend.main:app --port 8000
+
+(Ye port 8000 pe chalne lagega)
+
+---
+
+STEP 2: FRONTEND RUN KARNA (React/Vite)
+---------------------------------------
+Frontend folder (ye wali directory) me aa kar ye commands chalana:
+
+1. Saari dependencies download karne ke liye (Ye requirements.txt jaisa hi kaam karta hai):
+   npm install
+
+2. Frontend Start karne ke liye:
+   npm run dev
+
+(Ye usually port 5173 par chalega, link terminal me aa jayega)
+
+---
+
+NOTE FOR PRESENTATION:
+Frontend me maine API ka link wapas "localhost:8000" kar diya hai, taaki tere presentation me internet na hone par bhi bina kisi lag ke makkhan jaisa chale. Good luck!
