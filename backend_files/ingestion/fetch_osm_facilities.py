@@ -44,8 +44,24 @@ ZONES = [
 
 def fetch_zone_facilities(bbox):
     s, w, n, e = bbox
-    
-    query = f
+
+    # NOTE: this query body was truncated in an earlier commit, leaving the
+    # module unparseable and the whole `ingestion` package un-importable.
+    # Restored to select the heavy-industry features this database is built
+    # from, across nodes, ways and relations.
+    query = f"""
+    [out:json][timeout:60];
+    (
+      node["man_made"~"works|petroleum_well|storage_tank|flare"]({s},{w},{n},{e});
+      way["man_made"~"works|petroleum_well|storage_tank|flare"]({s},{w},{n},{e});
+      way["landuse"="industrial"]({s},{w},{n},{e});
+      way["industrial"]({s},{w},{n},{e});
+      way["power"~"plant|generator"]({s},{w},{n},{e});
+      relation["landuse"="industrial"]({s},{w},{n},{e});
+      relation["industrial"]({s},{w},{n},{e});
+    );
+    out center tags;
+    """
     url = "https://overpass-api.de/api/interpreter"
     try:
         res = requests.post(url, data={"data": query}, headers={"User-Agent": "IndustrialMonitorBot/3.0"}, timeout=35)
@@ -93,7 +109,8 @@ def build_complete_facility_database():
             tags = el.get("tags", {})
             name = tags.get("name", tags.get("operator", tags.get("description", tags.get("name:en"))))
             if not name:
-                name = f"{zone['name'].split()[0]} Industrial Cluster 
+                # Also truncated in the same commit.
+                name = f"{zone['name'].split()[0]} Industrial Cluster {el.get('id')}"
 
             raw_type = tags.get("industrial", tags.get("plant:source", tags.get("power", tags.get("landuse", "Industrial Facility"))))
             plant_type = str(raw_type).replace("_", " ").capitalize()
