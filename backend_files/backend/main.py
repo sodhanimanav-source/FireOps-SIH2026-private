@@ -504,7 +504,7 @@ def get_live_hotspots_v1():
             # Sub-pixel temperature replaces the previously hard-coded value,
             # falling back to the legacy constant only where the pipeline has
             # not produced a retrieval for this location.
-            vnf_temp = intel.get("Sub_Pixel_Temp") or 1200
+            vnf_temp = intel.get("Sub_Pixel_Temp")
 
             feature = {
                 "type": "Feature",
