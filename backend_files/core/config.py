@@ -161,7 +161,18 @@ class GraphSettings:
     embedding_dim: int = _env_int("FIREOPS_GNN_DIM", 64)
     sage_layers: int = _env_int("FIREOPS_GNN_LAYERS", 2)
     cache_ttl_s: int = _env_int("FIREOPS_OSM_CACHE_TTL", 604800)  # 7 days
-    http_timeout_s: float = _env_float("FIREOPS_OVERPASS_TIMEOUT", 25.0)
+    # Overpass is a free, heavily shared public service and frequently
+    # rate-limits or stalls. Fail fast: a slow graph is worth far less than a
+    # fast pipeline, because the local facility database covers the fallback.
+    http_timeout_s: float = _env_float("FIREOPS_OVERPASS_TIMEOUT", 8.0)
+    # Circuit breaker — after this many consecutive failures, stop calling
+    # Overpass entirely for `breaker_cooldown_s`. Without this, every anomaly
+    # in every cycle pays the full timeout, which dominates the runtime.
+    breaker_threshold: int = _env_int("FIREOPS_OSM_BREAKER_THRESHOLD", 3)
+    breaker_cooldown_s: int = _env_int("FIREOPS_OSM_BREAKER_COOLDOWN", 600)
+    # Remember empty/failed lookups too, so a barren location is not queried
+    # again on the next pass.
+    negative_cache_ttl_s: int = _env_int("FIREOPS_OSM_NEG_CACHE_TTL", 3600)
     offline_only: bool = _env_bool("FIREOPS_OSM_OFFLINE", False)
 
 

@@ -52,6 +52,7 @@ import hashlib
 import json
 import math
 import os
+import threading
 import time
 from typing import Any, Dict, List, Optional, Sequence, Tuple
 
@@ -213,8 +214,66 @@ def _build_overpass_query(lat: float, lng: float, radius_m: int) -> str:
     return f"[out:json][timeout:{int(_CFG.http_timeout_s)}];(" + "".join(selectors) + ");out center tags;"
 
 
+# ---------------------------------------------------------------------------
+# Overpass circuit breaker
+# ---------------------------------------------------------------------------
+# Overpass is a free public service that routinely rate-limits or stalls under
+# load. Without a breaker, every anomaly in every cycle pays the full HTTP
+# timeout before falling back — which on a national feed makes Stage 3 dominate
+# the entire pipeline runtime while contributing nothing.
+#
+# After a few consecutive failures the breaker opens and subsequent lookups go
+# straight to the local facility database, costing microseconds instead of
+# seconds. It closes automatically after a cooldown, so a transient Overpass
+# outage heals itself without a restart.
+_BREAKER = {"failures": 0, "open_until": 0.0}
+_BREAKER_LOCK = threading.Lock()
+
+
+def _breaker_is_open() -> bool:
+    with _BREAKER_LOCK:
+        return time.time() < _BREAKER["open_until"]
+
+
+def _breaker_record(success: bool) -> None:
+    with _BREAKER_LOCK:
+        if success:
+            if _BREAKER["failures"]:
+                log.info(
+                    "Overpass recovered; resuming live topology queries",
+                    extra={"stage": _STAGE},
+                )
+            _BREAKER["failures"] = 0
+            _BREAKER["open_until"] = 0.0
+            return
+
+        _BREAKER["failures"] += 1
+        if _BREAKER["failures"] >= _CFG.breaker_threshold and not (
+            time.time() < _BREAKER["open_until"]
+        ):
+            _BREAKER["open_until"] = time.time() + _CFG.breaker_cooldown_s
+            log.warning(
+                "Overpass unreachable after %d attempts — pausing live topology "
+                "queries for %ds and using the local facility database instead",
+                _BREAKER["failures"],
+                _CFG.breaker_cooldown_s,
+                extra={"stage": _STAGE},
+            )
+
+
+def overpass_breaker_state() -> Dict[str, Any]:
+    """Exposed for /api/ai-status so an operator can see why topology degraded."""
+    with _BREAKER_LOCK:
+        remaining = max(0.0, _BREAKER["open_until"] - time.time())
+    return {
+        "open": remaining > 0.0,
+        "consecutive_failures": _BREAKER["failures"],
+        "cooldown_remaining_s": round(remaining, 1),
+    }
+
+
 def _fetch_overpass(lat: float, lng: float, radius_m: int) -> Optional[List[Dict[str, Any]]]:
-    if _CFG.offline_only:
+    if _CFG.offline_only or _breaker_is_open():
         return None
     try:
         import requests
@@ -229,9 +288,15 @@ def _fetch_overpass(lat: float, lng: float, radius_m: int) -> Optional[List[Dict
             timeout=_CFG.http_timeout_s,
         )
         if response.status_code != 200:
+            # 429 (rate limited) and 504 (gateway timeout) are Overpass's usual
+            # ways of saying "too busy" and should trip the breaker.
+            _breaker_record(success=False)
             return None
-        return response.json().get("elements", [])
+        elements = response.json().get("elements", [])
+        _breaker_record(success=True)
+        return elements
     except Exception as exc:
+        _breaker_record(success=False)
         log.debug("Overpass unavailable: %s", str(exc)[:120], extra={"stage": _STAGE})
         return None
 
@@ -305,6 +370,32 @@ def _facilities_as_elements(lat: float, lng: float, radius_m: int) -> List[Dict[
     return elements
 
 
+# Locations recently found to have nothing, so they are not re-queried every
+# cycle. Most anomalies are in open countryside with no industry at all.
+_NEGATIVE_CACHE: Dict[str, float] = {}
+_NEGATIVE_LOCK = threading.Lock()
+
+
+def _negative_cached(key: str) -> bool:
+    with _NEGATIVE_LOCK:
+        expiry = _NEGATIVE_CACHE.get(key)
+        if expiry is None:
+            return False
+        if time.time() > expiry:
+            _NEGATIVE_CACHE.pop(key, None)
+            return False
+        return True
+
+
+def _mark_negative(key: str) -> None:
+    with _NEGATIVE_LOCK:
+        # Bound the dictionary so a long-running national loop cannot grow it
+        # without limit.
+        if len(_NEGATIVE_CACHE) > 20_000:
+            _NEGATIVE_CACHE.clear()
+        _NEGATIVE_CACHE[key] = time.time() + _CFG.negative_cache_ttl_s
+
+
 def fetch_osm_subgraph(
     lat: float, lng: float, radius_m: Optional[int] = None
 ) -> Tuple[List[Dict[str, Any]], str]:
@@ -316,15 +407,23 @@ def fetch_osm_subgraph(
     if cached is not None:
         return cached, "cache"
 
+    # Check the local database before going to the network. It is instant, and
+    # a hit there means the anomaly is near a known major facility — the case
+    # that actually matters — so the Overpass round trip is not worth its cost.
+    local = _facilities_as_elements(lat, lng, radius)
+
+    if not local and _negative_cached(key):
+        return [], "unavailable"
+
     elements = _fetch_overpass(lat, lng, radius)
     if elements:
         _write_cache(key, elements)
         return elements, "overpass"
 
-    local = _facilities_as_elements(lat, lng, radius)
     if local:
         return local, "facilities"
 
+    _mark_negative(key)
     return [], "unavailable"
 
 

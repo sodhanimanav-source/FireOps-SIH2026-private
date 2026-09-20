@@ -297,6 +297,15 @@ def get_ai_status():
     except Exception as exc:
         agent = {"running": False, "error": str(exc)[:160]}
 
+    # Surface why topology may be degraded: if Overpass has tripped the
+    # circuit breaker, Stage 3 is running on the local facility database.
+    try:
+        from models.gnn_topology import overpass_breaker_state
+
+        overpass = overpass_breaker_state()
+    except Exception:
+        overpass = {}
+
     return {
         "status": "success",
         "architecture": "6-Stage Multi-Modal Industrial Fire Classification",
@@ -355,6 +364,7 @@ def get_ai_status():
         "gate_threshold_k": fireops_settings.physics.industrial_temperature_gate_k,
         "hitl_threshold": fireops_settings.fusion.hitl_confidence_threshold,
         "degraded_stage_counts": degraded_counts,
+        "overpass": overpass,
         "agent": agent,
         "intelligence": stats,
     }
