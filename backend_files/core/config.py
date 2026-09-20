@@ -104,6 +104,15 @@ class PhysicsSettings:
     # discontinuous at 1199.9 K vs 1200.1 K.
     gate_softness_k: float = _env_float("FIREOPS_GATE_SOFTNESS_K", 120.0)
 
+    # Physical ceiling for terrestrial combustion in air. Adiabatic flame
+    # temperatures: methane/air ~2223 K, propane/air ~2250 K, blast furnace
+    # raceway ~2300 K. Only oxy-fuel cutting exceeds this, and not over areas
+    # a satellite resolves. A retrieval above this is not a hotter fire — it
+    # is the bi-spectral method's known instability when the TIR excess is
+    # near the noise floor, which drives the solution to very high
+    # temperature over a vanishing area.
+    max_plausible_combustion_k: float = _env_float("FIREOPS_MAX_PLAUSIBLE_K", 2500.0)
+
     # ---- Dozier solver bounds --------------------------------------------
     solver_min_temp_k: float = 400.0
     solver_max_temp_k: float = 3000.0

@@ -242,6 +242,10 @@ class PlanckSolution(_Serialisable):
     method: str = "dozier_bispectral"
     residual: float = 0.0
     converged: bool = False
+    # False when the retrieved temperature exceeds what terrestrial combustion
+    # in air can physically reach, which signals a noise-driven solution
+    # rather than an extraordinarily hot fire.
+    retrieval_plausible: bool = True
     fire_area_m2: float = 0.0
     frp_retrieved_mw: Optional[float] = None
     frp_observed_mw: Optional[float] = None

@@ -421,8 +421,30 @@ def run_cycle(
             seen_this_cycle.add(event_id)
             fresh.append((hotspot, solution))
 
-        fresh.sort(key=lambda pair: pair[0].risk_score, reverse=True)
+        # Triage order matters as much as the gate itself. Ranking by
+        # risk_score alone is ranking by FRP and brightness — precisely the
+        # reasoning this architecture exists to replace. In practice that
+        # buries the anomalies that actually cleared the 1200 K gate beneath a
+        # crowd of unretrievable ones, so a capped cycle spends its entire
+        # budget on anomalies whose physics is unknown and never reaches the
+        # confirmed industrial candidates.
+        #
+        # Order instead by what Stage 2 established:
+        #   1. anomalies that cleared the gate  (confirmed industrial heat)
+        #   2. among those, the hottest first   (most energetic combustion)
+        #   3. then the rest by triage score    (indeterminate, still worth a look)
+        fresh.sort(
+            key=lambda pair: (
+                1 if pair[1].passed_gate else 0,
+                pair[1].subpixel_temp_k,
+                pair[0].risk_score,
+            ),
+            reverse=True,
+        )
         selected = fresh[:limit]
+
+        gate_passers = sum(1 for _, solution in selected if solution.passed_gate)
+        span["selected_gate_passers"] = gate_passers
 
         span["leo"] = len(hotspots)
         span["muted"] = len(muted)

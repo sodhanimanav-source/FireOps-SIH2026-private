@@ -538,6 +538,12 @@ def calculate_subpixel_temperature_batch(
 
         passed = converged & (temperature >= threshold)
 
+        # Retrievals above the physical ceiling for combustion in air are kept
+        # — the anomaly is unquestionably industrial-hot and the gate decision
+        # is unaffected — but flagged, because the *number* is not credible and
+        # Stage 6 should not rest confidence on it.
+        implausible = converged & (temperature > _PHYS.max_plausible_combustion_k)
+
         solutions: List[PlanckSolution] = []
         for index in range(n):
             if converged[index]:
@@ -546,8 +552,19 @@ def calculate_subpixel_temperature_batch(
                     if passed[index]
                     else ThermalClass.BIOMASS
                 )
-                status = StageStatus.OK
-                note = ""
+                if implausible[index]:
+                    status = StageStatus.FALLBACK
+                    note = (
+                        f"retrieved {temperature[index]:.0f} K exceeds the "
+                        f"{_PHYS.max_plausible_combustion_k:.0f} K ceiling for "
+                        "combustion in air — the bi-spectral solution is "
+                        "noise-dominated (near-zero TIR excess). Treated as "
+                        "confirmed industrial heat, but the temperature value "
+                        "itself is not relied upon."
+                    )
+                else:
+                    status = StageStatus.OK
+                    note = ""
             else:
                 thermal_class = ThermalClass.INDETERMINATE
                 status = StageStatus.FALLBACK
@@ -569,6 +586,7 @@ def calculate_subpixel_temperature_batch(
                     method=str(method[index]),
                     residual=float(residual[index]),
                     converged=bool(converged[index]),
+                    retrieval_plausible=not bool(implausible[index]),
                     fire_area_m2=round(float(fire_area[index]), 4) if converged[index] else 0.0,
                     frp_retrieved_mw=(
                         round(float(frp_retrieved_mw[index]), 3)
@@ -596,6 +614,8 @@ def calculate_subpixel_temperature_batch(
 
         span["converged"] = int(converged.sum())
         span["passed_gate"] = int(passed.sum())
+        if implausible.any():
+            span["implausible"] = int(implausible.sum())
         span["muted_biomass"] = int((converged & ~passed).sum())
         span["mean_temp_k"] = float(temperature[converged].mean()) if converged.any() else 0.0
         return solutions

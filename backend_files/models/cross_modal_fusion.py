@@ -380,6 +380,13 @@ def _build_evidence(
             f"{temperature_k:.0f} K filling {physics.fractional_area:.2e} of the pixel "
             f"({physics.fire_area_m2:.0f} m² of fire)."
         )
+        if not getattr(physics, "retrieval_plausible", True):
+            evidence.append(
+                f"Caution: {temperature_k:.0f} K is above the physical ceiling for "
+                "combustion in air (~2500 K), so this retrieval is noise-dominated. "
+                "The source is confirmed industrial-scale heat, but the temperature "
+                "value should not be quoted."
+            )
         if physics.frp_agreement is not None and physics.frp_agreement > 0.5:
             evidence.append(
                 f"Retrieved FRP agrees with the reported value to "
@@ -641,7 +648,14 @@ def cross_modal_attention(
             # sitting right on the 1200 K threshold means the family decision
             # itself rests on weaker ground.
             gate_certainty = abs(gate - 0.5) * 2.0
-            physics_quality = 1.0 if (physics is None or physics.converged) else 0.3
+            if physics is None or physics.converged:
+                # A retrieval above the physical ceiling for combustion still
+                # settles the gate — the source is unquestionably industrial-hot
+                # — but the value is noise-driven, so it does not earn full
+                # evidence credit.
+                physics_quality = 1.0 if getattr(physics, "retrieval_plausible", True) else 0.6
+            else:
+                physics_quality = 0.3
             evidence_quality = 0.5 * gate_certainty + 0.5 * physics_quality
 
             confidence = float(

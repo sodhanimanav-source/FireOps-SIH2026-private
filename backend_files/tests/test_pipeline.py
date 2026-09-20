@@ -198,6 +198,46 @@ class TestSubPixelRetrieval:
         assert solution.thermal_class is ThermalClass.INDETERMINATE
         assert solution.thermal_class is not ThermalClass.BIOMASS
 
+    def test_implausible_temperature_is_flagged_not_believed(self):
+        """
+        The bi-spectral retrieval becomes unstable when the TIR excess
+        approaches the noise floor, driving the solution to an absurd
+        temperature over a vanishing area. Nothing burns above ~2500 K in air,
+        so such a result must be flagged rather than reported as fact — while
+        still counting as confirmed industrial heat, since the gate decision
+        is unaffected.
+        """
+        pixel = synthesise_pixel(2900.0, 2.0e-6)
+        solution = calculate_subpixel_temperature(pixel)
+
+        assert solution.converged
+        assert not solution.retrieval_plausible
+        assert solution.thermal_class is ThermalClass.INDUSTRIAL_CANDIDATE
+        assert "ceiling" in solution.notes.lower()
+
+        # A normal industrial retrieval must not be flagged.
+        normal = calculate_subpixel_temperature(synthesise_pixel(1850.0, 1e-4))
+        assert normal.retrieval_plausible
+
+    def test_implausible_retrieval_lowers_confidence(self):
+        from models.cross_modal_fusion import cross_modal_attention
+
+        graph, vision, temporal = _contexts(0.9, 0.85, 0.05, 0.95, 1.0, 0.95, 0.05, 24.0)
+
+        credible = cross_modal_attention(
+            temp=1850, graph_data=graph, vision_data=vision, time_data=temporal,
+            physics=_physics(1850), frp_mw=30.0,
+        )
+        suspect_physics = _physics(2900)
+        suspect_physics.retrieval_plausible = False
+        suspect = cross_modal_attention(
+            temp=2900, graph_data=graph, vision_data=vision, time_data=temporal,
+            physics=suspect_physics, frp_mw=30.0,
+        )
+
+        assert suspect.confidence < credible.confidence
+        assert any("ceiling" in e.lower() for e in suspect.evidence)
+
     def test_backwards_compatible_tuple_unpacking(self):
         """The earlier two-value call convention must keep working."""
         temperature, fraction = calculate_subpixel_temperature(
